@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOKEPON!</title>
-    <script src="./js/mokepon.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
 </head>
     <body>       
@@ -13,24 +12,8 @@
 
             <h2 class="subtitulo">Elige tu mascota:</h2>
 
-            <div class="tarjetas">
-                <input type="radio" name="mascota" id="hipodoge"/>
-                <label class="tarjeta-mokepon" for="hipodoge">
-                    <p>Hipodoge</p>
-                    <img src="./assets/img/mokepons_mokepon_hipodoge_attack.png" alt="Hipodoge" srcset="">
-                </label>
+            <div class="tarjetas" id="contenedor-tarjetas">
                 
-                <input type="radio" name="mascota" id="capipepo"/>
-                <label class="tarjeta-mokepon" for="capipepo">
-                    <p>Capipepo</p>
-                    <img src="./assets/img/mokepons_mokepon_capipepo_attack.png" alt="Capipepo" srcset="">
-                </label>
-                
-                <input type="radio" name="mascota" id="ratigueya"/>    
-                <label class="tarjeta-mokepon" for="ratigueya">
-                    <p>Ratigueya</p>
-                    <img src="./assets/img/mokepons_mokepon_ratigueya_attack.png" alt="Ratigueya" srcset="">
-                </label>
             </div>
 
             <button id="boton-mascota">Seleccionar</button>
@@ -70,4 +53,5 @@
             </div>
         </section>    
     </body>
+    <script src="./js/mokepon.js"></script>
 </html>
