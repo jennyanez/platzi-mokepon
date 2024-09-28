@@ -92,12 +92,13 @@ input:checked + label {
 
 .botones-ataques {
     display: flex;
+    flex-direction: row;
     gap: 10px;
     margin-bottom: 24px;
 }
 
 .boton-ataque {
-    width: 200px;
+    width: 80px;
     padding: 10px;
     border-radius: 20px;
     border-color: transparent;
