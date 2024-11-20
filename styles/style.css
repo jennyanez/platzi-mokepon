@@ -84,6 +84,25 @@ input:checked + label {
     font-size: 20px;
 }
 
+/* Seccion de canvas */
+#ver-mapa {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#ver-mapa button {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background-color: transparent;
+    border: 2px solid var(--button-border);
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
 /* Seccion de ataques */
 #seleccionar-ataque {
     flex-direction: column;
@@ -152,11 +171,18 @@ input:checked + label {
     font-size: 24px;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
     .tarjetas, .botones-ataques{
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
+}
 
+@media (max-width: 360px) {
+    #ver-mapa div{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
