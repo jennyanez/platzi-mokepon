@@ -6,60 +6,98 @@
     <title>MOKEPON!</title>
     <link rel="stylesheet" href="./styles/style.css">
 </head>
-    <body>       
+    <body>  
+        <section id="pantalla-inicio">
+            <div class="titulo">
+                <img src="./assets/img/logo.png" alt="">
+            </div>
+            <button id="play-game" class="button">PLAY!</button>
+        </section>     
+
         <section id="seleccionar-mascota">
-            <h1 class="titulo">MOKEPON</h1>
-
-            <h2 class="subtitulo">Elige tu mascota:</h2>
-
-            <div  id="contenedor-tarjetas" class="tarjetas">
-                
+            <div class="titulo">
+                <img src="./assets/img/logo.png" alt="">
             </div>
 
-            <button id="boton-mascota">Seleccionar</button>
+            <div  id="contenedor-tarjetas" class="tarjetas">
+                <h2 class="subtitulo badge">Elige tu mascota:</h2>
+            </div>
+
+            <button id="boton-mascota" class="button">Seleccionar</button>
         </section>
 
         <section id="ver-mapa">
-            <h2 class="subtitulo">Recorre el mapa con tu MOKEPON</h2>
-            <canvas id="mapa"></canvas>
-            <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()">⬆️</button>
-            <div>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">⬅️</button>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">⬇️</button>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">➡️</button>
-            </div>          
+            <div class="titulo">
+                <img src="./assets/img/logo.png" alt="">
+            </div>
+            
+            <div class="mapa-container">
+                <canvas id="mapa"></canvas>
+                
+                <div class="arrows-subtitle-container">
+                    <h2 class="subtitulo">Ve hacia el enemigo con el que quieras luchar</h2>
+                    
+                    <div class="buttons-container">
+                        <button class="button" onmouseup="detenerMovimiento()" onmousedown="moverArriba()">Up</button>
+                        <div>
+                            <button class="button" onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">Left</button>
+                            <button class="button" onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">Down</button>
+                            <button class="button" onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">Right</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </section>
 
         <section id="seleccionar-ataque">
-            <h1 class="titulo">MOKEPON</h1>
-
-            <h2 class="subtitulo">Elige tu ataque:</h2>
-
-            <div id="contenedor-ataques" class="botones-ataques">
-                
+            <div class="titulo">
+                <img src="./assets/img/logo.png" alt="">
             </div>
 
-            <div id="mensajes">
-                <p id="resultado">Dale puti</p>
-
-                <section id="reiniciar">
-                    <button id="boton-reiniciar">Reiniciar</button>
-                </section>                 
-            </div>
-
-            <div class="ataques">
-                <div class="ataques-jugador">
-                    <p id="vidas-jugador">3</p>
-                    <p id="mascota-jugador"></p>
-                    <div id="ataque-jugador"></div>
+            <div class="contenido">
+                <div class="contenedor-izquierdo">
+                    <div id="mascotas-seleccionadas">
+                    
+                    </div>
+                    <h2 class="subtitulo" id="subtitulo_pelea"></h2>
                 </div>
+                
+                <div class="contenedor-derecho">
+                    <div class="contenedor-de-ataques">
+                        
+                        
+                        <div class="ataques-mensajes">
+                            <div id="contenedor-ataques" class="botones-ataques">
+                        
+                            </div>
+                            
+                            <div class="ataques">
+                                <div id="mensajes">
+                                    <p id="resultado">FIGHT!</p>
+                                </div>
 
-                <div class="ataques-enemigo">
-                    <p id="vidas-enemigo">3</p>
-                    <p id="mascota-enemigo"></p>
-                    <div id="ataque-enemigo"></div>
-                </div> 
-            </div>
+                                <div class="resultados-ataques">
+                                    <div class="ataques-jugador">
+                                        <p id="mascota-jugador"></p>
+                                        <div id="ataque-jugador"></div>
+                                    </div>
+                                    <div class="ataques-enemigo">
+                                        <p id="mascota-enemigo"></p>
+                                        <div id="ataque-enemigo"></div>
+                                    </div>
+                                </div>
+                                
+                                <div id="reiniciar">
+                                    <button id="boton-reiniciar" class="button">Reiniciar</button>
+                                </div>  
+
+                            </div>
+                        </div>  
+                    </div>
+                </div>               
+            </div>            
         </section>    
     </body>
     <script src="./js/mokepon.js"></script>
