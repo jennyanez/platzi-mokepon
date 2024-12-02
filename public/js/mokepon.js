@@ -170,7 +170,7 @@ function iniciarJuego() {
 }
 
 function joinGame(){
-   fetch("http://localhost:8080/join")
+   fetch("http://172.20.10.4:8080/join")
         .then(function (res) {
             if(res.ok) {
                 res.text()
@@ -188,8 +188,7 @@ function aleatorio(min, max) {
 
 // Elegir mascota
 function seleccionarMascotaJugador() {   
-    
-    
+        
     if (inputHipodoge.checked) {
         spanMascotaJugador.innerHTML = inputHipodoge.id
         mascotaJugadorNombre = inputHipodoge.id
@@ -201,7 +200,7 @@ function seleccionarMascotaJugador() {
         mascotaJugadorNombre = inputRatigueya.id
     } else {
         alert('Selecciona una mascota, Don Comedias')
-        return
+        return //esto hace que no se siga ejecutando el codigo
     }
     
     sectionSeleccionarMascota.style.display = 'none'
@@ -216,7 +215,7 @@ function seleccionarMascotaJugador() {
 }
 
 function selectMokepon(mokeponJugador){
-    fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+    fetch(`http://172.20.10.4:8080/mokepon/${jugadorId}`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -272,7 +271,7 @@ function pintarCanvas(){
 }
 
 function enviarPosicion(x, y){
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
+    fetch(`http://172.20.10.4:8080/mokepon/${jugadorId}/posicion`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -350,6 +349,11 @@ function teclaPresionada(event) {
 }
 
 function revisarColision(enemigo) {
+    
+    if(enemigo.x == undefined || enemigo.y == undefined){
+        return
+    }
+
     const arribaEnemigo = enemigo.y
     const abajoEnemigo = enemigo.y + enemigo.height
     const derechaEnemigo = enemigo.x + enemigo.width
@@ -431,7 +435,7 @@ function secuenciaAtaque() {
 }
 
 function enviarAtaques() {
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`, {
+    fetch(`http://172.20.10.4:8080/mokepon/${jugadorId}/ataques`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -445,7 +449,7 @@ function enviarAtaques() {
 }
 
 function obtenerAtaques(){
-    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`)
+    fetch(`http://172.20.10.4:8080/mokepon/${enemigoId}/ataques`)
         .then(function (res) {
             if(res.ok){
                 res.json()

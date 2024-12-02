@@ -92,15 +92,14 @@ input:checked + label {
 }
 
 #ver-mapa button {
-    width: 50px;
-    height: 50px;
+    padding: 8px 16px;
     margin: 5px;
     background-color: transparent;
     border: 2px solid var(--button-border);
     border-radius: 20px;
     color: white;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 /* Seccion de ataques */
