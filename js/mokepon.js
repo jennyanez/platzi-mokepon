@@ -68,7 +68,7 @@ if (anchoMapa > maxAncho) {
 
 let intervalo
 let mapaBackground = new Image()
-mapaBackground.src = './assets/img/mi-mapa.webp'
+mapaBackground.src = './assets/img/mapa.webp'
 
 
 

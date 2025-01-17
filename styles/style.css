@@ -29,12 +29,20 @@ body {
     gap: 100px;
     width: 100vw;
     height: 100vh;
-    background: url("/assets/img/mokepon-inicio-1.jpg");
+    background: url("/assets/img/inicio.webp");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.buttons-container.play {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 8px;
+}
+
 #play-game, .button {
+    width: 100%;
     padding: 24px 64px;
     font-family: 'Luckiest Guy', sans-serif;
     font-size: 44px;
@@ -47,6 +55,10 @@ body {
 
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 /* Seccion de mascotas */
 #seleccionar-mascota {
     height: 100vh;
@@ -56,7 +68,10 @@ body {
     align-items: center;
     gap: 32px;
     padding: 0 16px;
-    background: url('/assets/img/mokepon-seleccionar.jpg');
+    background: url('/assets/img/elegir-mascota.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
 }
 
 .titulo img{
@@ -125,12 +140,13 @@ input:checked + label {
 }
 
 #boton-mascota, #boton-reiniciar {
-    width: 200px;
-    height: 60px;
+    width: 220px;
+    height: 70px;
     padding: 0;
     color: white;
     font-weight: 600;
     font-size: 24px;
+    letter-spacing: 1px;
 }
 
 /* Seccion de canvas */
@@ -218,7 +234,7 @@ canvas {
     justify-content: space-between;
     width: 750px;
     height: 400px;
-    background: url("/assets/img/background-2.webp");
+    background: url("/assets/img/combate.webp");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -253,6 +269,7 @@ canvas {
 .vidas {
     display: flex;
     flex-direction: row;
+    gap: 1px;
 }
 
 .vidas img {
