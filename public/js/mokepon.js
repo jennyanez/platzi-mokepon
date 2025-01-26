@@ -71,8 +71,8 @@ let vidasEnemigo = 3
 
 let lienzo = mapa.getContext("2d")
 let alturaNueva
-let anchoMapa = window.innerWidth - 20
-const maxAncho = 620
+let anchoMapa = window.innerWidth - 40
+const maxAncho = 520
 
 if (anchoMapa > maxAncho) {
     anchoMapa = maxAncho - 20
@@ -199,7 +199,7 @@ function iniciarJuego() {
 }
 
 function joinGame(){
-    fetch("http://localhost:8080/join")
+    fetch("http://172.20.10.3:8080/join")
         .then(function (res) {
             console.log(res)
             if(res.ok){
@@ -231,10 +231,6 @@ function aleatorio(min, max) {
 
 // Elegir mascota
 function seleccionarMascotaJugador() {
-    //ocultar/mostrar secciones
-   
-    sectionSeleccionarMascota.style.display = 'none'
-    sectionVerMapa.style.display = 'flex'
    
     if (inputHipodoge.checked) {
         spanMascotaJugador.innerHTML = inputHipodoge.id
@@ -247,7 +243,12 @@ function seleccionarMascotaJugador() {
         mascotaJugadorNombre = inputRatigueya.id
     } else {
         alert('Selecciona una mascota, Don Comedias')
+        return
     }
+
+    //ocultar/mostrar secciones
+    sectionSeleccionarMascota.style.display = 'none'
+    sectionVerMapa.style.display = 'flex'
 
     if(gameOnline == true){
         seleccionarMokepon(mascotaJugadorNombre)
@@ -260,7 +261,7 @@ function seleccionarMascotaJugador() {
 }
 
 function seleccionarMokepon(mascotaJugador) {
-    fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+    fetch(`http://172.20.10.3:8080/mokepon/${jugadorId}`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -324,7 +325,7 @@ function pintarCanvas(){
 }
 
 function enviarPosicion(x, y){
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
+    fetch(`http://172.20.10.3:8080/mokepon/${jugadorId}/posicion`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -343,18 +344,24 @@ function enviarPosicion(x, y){
                         let mokeponEnemigo = null
                         const mokeponNombre = enemigo.mokepon.nombre || ""
 
-                        if(mokeponNombre === "Hipodoge"){
-                            mokeponEnemigo = new Mokepon ('Hipodoge', './assets/img/mokepons_mokepon_hipodoge_attack.png', 5, './assets/img/hipodoge.png', enemigo.id)
-                        } else if (mokeponNombre === "Capipepo"){
-                            mokeponEnemigo = new Mokepon('Capipepo', './assets/img/mokepons_mokepon_capipepo_attack.png', 5, './assets/img/capipepo.png', enemigo.id)
-                        } else if(mokeponNombre === "Ratigueya"){
-                            mokeponEnemigo = new Mokepon('Ratigueya', './assets/img/mokepons_mokepon_ratigueya_attack.png', 5, './assets/img/ratigueya.png', enemigo.id)
+                        if(mokeponNombre !== ""){
+                            if(mokeponNombre === "Hipodoge"){
+                                mokeponEnemigo = new Mokepon ('Hipodoge', './assets/img/mokepons_mokepon_hipodoge_attack.png', 5, './assets/img/hipodoge.png', enemigo.id)
+                            } else if (mokeponNombre === "Capipepo"){
+                                mokeponEnemigo = new Mokepon('Capipepo', './assets/img/mokepons_mokepon_capipepo_attack.png', 5, './assets/img/capipepo.png', enemigo.id)
+                            } else if(mokeponNombre === "Ratigueya"){
+                                mokeponEnemigo = new Mokepon('Ratigueya', './assets/img/mokepons_mokepon_ratigueya_attack.png', 5, './assets/img/ratigueya.png', enemigo.id)
+                            }
+    
+                            mokeponEnemigo.x = enemigo.x
+                            mokeponEnemigo.y = enemigo.y
+                            
+                            return mokeponEnemigo
                         }
-
-                        mokeponEnemigo.x = enemigo.x
-                        mokeponEnemigo.y = enemigo.y
+                        else{
+                            return
+                        }
                         
-                        return mokeponEnemigo
                     })
                })           
         }
@@ -545,7 +552,7 @@ function secuenciaAtaque() {
 }
 
 function enviarAtaques() {
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`, {
+    fetch(`http://172.20.10.3:8080/mokepon/${jugadorId}/ataques`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -559,7 +566,7 @@ function enviarAtaques() {
 }
 
 function obtenerAtaques(){
-    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`)
+    fetch(`http://172.20.10.3:8080/mokepon/${enemigoId}/ataques`)
         .then(function (res){
             if(res.ok){
                 res.json()

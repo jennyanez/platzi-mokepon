@@ -29,7 +29,7 @@ body {
     gap: 100px;
     width: 100vw;
     height: 100vh;
-    background: url("/assets/img/inicio.webp");
+    background: url("../assets/img/inicio.webp");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -52,7 +52,6 @@ body {
     background-color: rgb(51, 204, 0);
     border: none;
     box-shadow: 0 5px 0 0px rgba(255, 255, 255, 0.50) inset, 0 -7px 0px 0 rgba(0, 0, 0, 0.50) inset;
-
 }
 
 button:hover{
@@ -68,7 +67,7 @@ button:hover{
     align-items: center;
     gap: 32px;
     padding: 0 16px;
-    background: url('/assets/img/elegir-mascota.webp');
+    background: url('../assets/img/elegir-mascota.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -234,7 +233,7 @@ canvas {
     justify-content: space-between;
     width: 750px;
     height: 400px;
-    background: url("/assets/img/combate.webp");
+    background: url("../assets/img/combate.webp");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -369,11 +368,32 @@ canvas {
 
 
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .tarjetas, .botones-ataques{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    #contenedor-tarjetas .tarjeta-mokepon {
+        padding: 0  0 12px 0;
+        flex-direction: row;
+        gap: 0px;
+    }
+
+    .tarjeta-mokepon img{
+        width: 100px
+    }
+
+    .mapa-container{
+        flex-direction: column;
+        margin-top: 0;
+        gap: 0;
+    }
+    
+    .arrows-subtitle-container {
+        flex-direction: row;
+        gap: 0;
     }
 
     .contenido {
@@ -401,10 +421,22 @@ canvas {
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 425px) {
     #ver-mapa div{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    #play-game, .button {
+        width: 100%;
+        padding: 16px 24px;
+        font-family: 'Luckiest Guy', sans-serif;
+        font-size: 32px;
+    }
+
+    .titulo img{
+        width: 300px;
+        height: auto;
     }
 }
