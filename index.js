@@ -3,7 +3,7 @@ const cors = require("cors")
 
 const app = express()
 app.use(cors())
-app.use(express.static('public'))
+app.use(express.static("public"))
 app.use(express.json())
 
 const jugadores = []
@@ -13,22 +13,22 @@ class Jugador {
         this.id = id
     }
 
-    asignarMokepon(mokepon){
+    asignarMokepon(mokepon) {
         this.mokepon = mokepon
     }
 
-    actualizarPosicion(x, y){
+    actualizarPosicion(x, y) {
         this.x = x
         this.y = y
     }
 
-    asignarAtaques(ataques){
+    asignarAtaques(ataques) {
         this.ataques = ataques
     }
 }
 
 class Mokepon {
-    constructor(nombre){
+    constructor(nombre) {
         this.nombre = nombre
     }
 }
@@ -38,19 +38,18 @@ app.get("/join", (req, res) => {
     const jugador = new Jugador(id)
     jugadores.push(jugador)
 
-    res.setHeader('Access-Control-Allow-Origin', '*')
-
+    res.setHeader("Access-Control-Allow-Origin", "*")
     res.send(id)
 })
 
 app.post("/mokepon/:jugadorId", (req, res) => {
     const jugadorId = req.params.jugadorId || ""
-    const mascota  = req.body.mokepon || ""
+    const mascota = req.body.mokepon || ""
 
     const mokepon = new Mokepon(mascota)
     const jugadorIndex = jugadores.findIndex((jugador) => jugador.id === jugadorId)
 
-    if(jugadorIndex >= 0){
+    if (jugadorIndex >= 0) {
         jugadores[jugadorIndex].asignarMokepon(mokepon)
     }
 
@@ -64,15 +63,13 @@ app.post("/mokepon/:jugadorId/posicion", (req, res) => {
 
     const jugadorIndex = jugadores.findIndex((jugador) => jugador.id === jugadorId)
 
-    if(jugadorIndex >= 0){
+    if (jugadorIndex >= 0) {
         jugadores[jugadorIndex].actualizarPosicion(x, y)
     }
 
     const enemigos = jugadores.filter((jugador) => jugador.id !== jugadorId)
-    
-    res.send({
-        enemigos
-    })
+
+    res.send({ enemigos })
 })
 
 app.post("/mokepon/:jugadorId/ataques", (req, res) => {
@@ -81,7 +78,7 @@ app.post("/mokepon/:jugadorId/ataques", (req, res) => {
 
     const jugadorIndex = jugadores.findIndex((jugador) => jugador.id === jugadorId)
 
-    if(jugadorIndex >= 0){
+    if (jugadorIndex >= 0) {
         jugadores[jugadorIndex].asignarAtaques(ataques)
     }
 
@@ -93,11 +90,12 @@ app.get("/mokepon/:jugadorId/ataques", (req, res) => {
     const jugador = jugadores.find((jug) => jug.id === jugadorId)
 
     res.send({
-        ataques: jugador.ataques || []
+        ataques: jugador ? jugador.ataques || [] : []
     })
-
 })
 
-app.listen(8080, () => {
-    console.log("Servidor funcionando")
+const PORT = process.env.PORT || 8080
+
+app.listen(PORT, () => {
+    console.log(`Servidor funcionando en el puerto ${PORT}`)
 })
